@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramadan Mubarak 2026 - Pampore Poster Design</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Scheherazade+New:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #1a1a1a;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .controls {
+            background: #2a2a2a;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            color: white;
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .controls h2 {
+            color: #D4AF37;
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #D4AF37, #B8941F);
+            color: #1a1a1a;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Poster Container - A3 Size Ratio */
+        .poster-container {
+            width: 794px;  /* A3 width in pixels at 96 DPI */
+            height: 1123px; /* A3 height */
+            position: relative;
+            background: #000;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        /* Background Image */
+        .poster-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1542816417-0983c9c9ad53?w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.4) contrast(1.2);
+        }
+
+        /* Overlay Gradient */
+        .poster-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, 
+                rgba(0,0,0,0.8) 0%, 
+                rgba(45, 90, 61, 0.6) 50%, 
+                rgba(0,0,0,0.9) 100%);
+        }
+
+        /* Islamic Pattern Overlay */
+        .islamic-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23D4AF37' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        /* Content Container */
+        .poster-content {
+            position: relative;
+            z-index: 10;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 60px;
+            color: white;
+            text-align: center;
+        }
+
+        /* Top Section - Crescent Moon */
+        .top-section {
+            position: relative;
+        }
+
+        .crescent-moon {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 30px;
+            position: relative;
+        }
+
+        .crescent-moon::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            box-shadow: -20px 0 0 10px #D4AF37;
+            transform: rotate(-30deg);
+            animation: glow 3s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.5)); }
+            50% { filter: drop-shadow(0 0 40px rgba(212, 175, 55, 0.8)); }
+        }
+
+        .lanterns {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-bottom: 20px;
+        }
+
+        .lantern {
+            font-size: 3rem;
+            color: #D4AF37;
+            animation: swing 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.5));
+        }
+
+        .lantern:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+
+        @keyframes swing {
+            0%, 100% { transform: rotate(-5deg); }
+            50% { transform: rotate(5deg); }
+        }
+
+        /* Main Title */
+        .main-title {
+            margin: 40px 0;
+        }
+
+        .ramadan-text {
+            font-family: 'Scheherazade New', serif;
+            font-size: 5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #D4AF37, #F4E4BC, #D4AF37);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+            line-height: 1.2;
+            letter-spacing: 5px;
+        }
+
+        .mubarak-text {
+            font-family: 'Amiri', serif;
+            font-size: 3.5rem;
+            color: #fff;
+            margin-top: 10px;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+        }
+
+        .arabic-text {
+            font-family: 'Scheherazade New', serif;
+            font-size: 2.5rem;
+            color: #D4AF37;
+            margin: 20px 0;
+            direction: rtl;
+        }
+
+        /* Date Section */
+        .date-section {
+            background: rgba(212, 175, 55, 0.1);
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 0;
+            backdrop-filter: blur(10px);
+        }
+
+        .date-label {
+            font-size: 1rem;
+            color: #aaa;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
+
+        .date-display {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #D4AF37;
+            font-family: 'Amiri', serif;
+        }
+
+        .hijri-date {
+            font-size: 1.3rem;
+            color: #fff;
+            margin-top: 10px;
+        }
+
+        /* Location Section */
+        .location-section {
+            margin: 30px 0;
+        }
+
+        .location-icon {
+            font-size: 2rem;
+            color: #D4AF37;
+            margin-bottom: 10px;
+        }
+
+        .location-name {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+        }
+
+        .location-sub {
+            font-size: 1rem;
+            color: #aaa;
+            margin-top: 5px;
+        }
+
+        /* Decorative Elements */
+        .decorative-line {
+            width: 200px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+            margin: 30px auto;
+        }
+
+        .stars {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .star {
+            color: #D4AF37;
+            font-size: 1.2rem;
+            animation: twinkle 2s ease-in-out infinite;
+        }
+
+        .star:nth-child(2) { animation-delay: 0.3s; }
+        .star:nth-child(3) { animation-delay: 0.6s; }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* Bottom Section */
+        .bottom-section {
+            margin-top: auto;
+        }
+
+        .message {
+            font-size: 1.1rem;
+            color: #ccc;
+            line-height: 1.8;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            font-style: italic;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(212, 175, 55, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #D4AF37;
+            font-size: 1.2rem;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .qr-section {
+            background: rgba(255,255,255,0.05);
+            padding: 15px;
+            border-radius: 10px;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .qr-placeholder {
+            width: 80px;
+            height: 80px;
+            background: #fff;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            font-size: 0.7rem;
+            text-align: center;
+        }
+
+        /* Corner Decorations */
+        .corner-decoration {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border: 3px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .corner-tl {
+            top: 30px;
+            left: 30px;
+            border-right: none;
+            border-bottom: none;
+            border-top-left-radius: 20px;
+        }
+
+        .corner-tr {
+            top: 30px;
+            right: 30px;
+            border-left: none;
+            border-bottom: none;
+            border-top-right-radius: 20px;
+        }
+
+        .corner-bl {
+            bottom: 30px;
+            left: 30px;
+            border-right: none;
+            border-top: none;
+            border-bottom-left-radius: 20px;
+        }
+
+        .corner-br {
+            bottom: 30px;
+            right: 30px;
+            border-left: none;
+            border-top: none;
+            border-bottom-right-radius: 20px;
+        }
+
+        /* Print Styles */
+        @media print {
+            .controls {
+                display: none;
+            }
+            .poster-container {
+                box-shadow: none;
+                margin: 0;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 850px) {
+            .poster-container {
+                transform: scale(0.5);
+                transform-origin: top center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Controls -->
+    <div class="controls">
+        <h2><i class="fas fa-mosque"></i> Ramadan Mubarak Poster Designer</h2>
+        <p>Size: A3 (297mm × 420mm) - Ready for CorelDRAW</p>
+        <button class="btn" onclick="downloadPoster()">
+            <i class="fas fa-download"></i> Download as PNG
+        </button>
+        <button class="btn" onclick="changeBackground()">
+            <i class="fas fa-image"></i> Change Background
+        </button>
+        <button class="btn" onclick="window.print()">
+            <i class="fas fa-print"></i> Print / Save PDF
+        </button>
+        <p style="margin-top: 15px; font-size: 0.9rem; color: #aaa;">
+            Tip: Save as PNG then import in CorelDRAW for vector editing
+        </p>
+    </div>
+
+    <!-- Poster -->
+    <div class="poster-container" id="poster">
+        <!-- Background -->
+        <div class="poster-bg" id="posterBg"></div>
+        <div class="poster-overlay"></div>
+        <div class="islamic-pattern"></div>
+
+        <!-- Corner Decorations -->
+        <div class="corner-decoration corner-tl"></div>
+        <div class="corner-decoration corner-tr"></div>
+        <div class="corner-decoration corner-bl"></div>
+        <div class="corner-decoration corner-br"></div>
+
+        <!-- Content -->
+        <div class="poster-content">
+            <!-- Top Section -->
+            <div class="top-section">
+                <div class="lanterns">
+                    <div class="lantern"><i class="fas fa-lightbulb"></i></div>
+                    <div class="lantern"><i class="fas fa-lightbulb"></i></div>
+                    <div class="lantern"><i class="fas fa-lightbulb"></i></div>
+                </div>
+
+                <div class="crescent-moon"></div>
+
+                <div class="stars">
+                    <i class="fas fa-star star"></i>
+                    <i class="fas fa-star star"></i>
+                    <i class="fas fa-star star"></i>
+                    <i class="fas fa-star star"></i>
+                    <i class="fas fa-star star"></i>
+                </div>
+            </div>
+
+            <!-- Main Title -->
+            <div class="main-title">
+                <div class="arabic-text">رمضان كريم</div>
+                <div class="ramadan-text">RAMADAN</div>
+                <div class="mubarak-text">MUBARAK</div>
+                <div class="decorative-line"></div>
+                <div class="arabic-text" style="font-size: 1.8rem;">مبارك عليكم الشهر</div>
+            </div>
+
+            <!-- Date Section -->
+            <div class="date-section">
+                <div class="date-label"> Start Date</div>
+                <div class="date-display">19 FEBRUARY 2026</div>
+                <div class="hijri-date">1 Ramadan 1447 AH</div>
+                <div style="margin-top: 15px; font-size: 0.9rem; color: #D4AF37;">
+                    <i class="fas fa-moon"></i> Thursday Evening
+                </div>
+            </div>
+
+            <!-- Location Section -->
+            <div class="location-section">
+                <div class="location-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div class="location-name">PAMPORE</div>
+                <div class="location-sub">Kashmir, India</div>
+                <div class="decorative-line" style="width: 100px;"></div>
+            </div>
+
+            <!-- Bottom Section -->
+            <div class="bottom-section">
+                <div class="message">
+                    "O you who have believed, decreed upon you is fasting as it was decreed upon those before you that you may become righteous."
+                    <br><span style="color: #D4AF37;">- Surah Al-Baqarah 2:183</span>
+                </div>
+
+                <div class="social-links">
+                    <div class="social-icon"><i class="fab fa-facebook-f"></i></div>
+                    <div class="social-icon"><i class="fab fa-instagram"></i></div>
+                    <div class="social-icon"><i class="fab fa-whatsapp"></i></div>
+                    <div class="social-icon"><i class="fas fa-envelope"></i></div>
+                </div>
+
+                <div style="font-size: 0.9rem; color: #666;">
+                    Designed for the Community of Pampore
+                </div>
+
+                <div class="qr-section">
+                    <div class="qr-placeholder">
+                        Scan for<br>Ramadan<br>Schedule
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Background Images Collection
+        const backgrounds = [
+            'https://images.unsplash.com/photo-1542816417-0983c9c9ad53?w=1200&q=80', // Mosque night
+            'https://images.unsplash.com/photo-1574246604907-db69e30ddb97?w=1200&q=80', // Islamic pattern
+            'https://images.unsplash.com/photo-1564769625905-50e93615e769?w=1200&q=80', // Lanterns
+            'https://images.unsplash.com/photo-1519810755548-39e2172da63e?w=1200&q=80', // Moon
+            'https://images.unsplash.com/photo-1536147116438-62679a5e01f2?w=1200&q=80'  // Stars
+        ];
+
+        let currentBg = 0;
+
+        function changeBackground() {
+            currentBg = (currentBg + 1) % backgrounds.length;
+            document.getElementById('posterBg').style.backgroundImage = `url('${backgrounds[currentBg]}')`;
+        }
+
+        function downloadPoster() {
+            const poster = document.getElementById('poster');
+            
+            html2canvas(poster, {
+                scale: 2,
+                useCORS: true,
+                allowTaint: true,
+                backgroundColor: null
+            }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = 'Ramadan-Mubarak-2026-Pampore.png';
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            });
+        }
+
+        // Add animation on load
+        window.addEventListener('load', () => {
+            const poster = document.getElementById('poster');
+            poster.style.opacity = '0';
+            poster.style.transform = 'scale(0.9)';
+            
+            setTimeout(() => {
+                poster.style.transition = 'all 0.8s ease';
+                poster.style.opacity = '1';
+                poster.style.transform = 'scale(1)';
+            }, 100);
+        });
+    </script>
+</body>
+</html>
